@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+body {
+  margin-top: 150px;
+}
+.container {
+  height: 340px;
+  width: 345px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 5px;
+  background-color: #96ed96;
+  border: 1px solid limegreen;
+}
+.square {
+  height: 100px;
+  width: 100px;
+  margin: 5px 5px;
+  background-color: #ccffcc;
+  color:  #ccffcc;
+  overflow: hidden;
+  border: 2px solid limegreen;
+  box-shadow: 1px 1px 1px limegreen;
+}
