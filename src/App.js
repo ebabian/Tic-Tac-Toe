@@ -26,25 +26,57 @@ class App extends React.Component {
       nextPlayer: nextPlayer,
       squares: square
     })
+
     // find winner
-    //
-      if (this.state.squares[0] === 'X' && this.state.squares[1] === 'X' && this.state.squares[2] === 'X') {
-        console.log('X wins');
+
+    //  0 | 1 | 2
+    //-------------
+    //  3 | 4 | 5
+    //-------------
+    //  6 | 7 | 8
+
+    // hortizontal, vertical, and diagonal winnng options of the sqaures
+    let winningOptions = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
+    ]
+
+    // loop through the array of possible winners
+    for(let i = 0; i < winningOptions.length; i++) {
+      //set rows to the index's values
+      let rows = winningOptions[i]
+      // looping through three values since the winningOptions arrays are each made up of 3 indexes -> rows[0], rows[1], rows[2]
+      let index1 = rows[0]
+      let index2 = rows[1]
+      let index3 = rows[2]
+      // checking if all three values are the same
+      if (square[index1] && square[index1] === square[index2] && square[index1] === square[index3]){
+        // set the winner to one of the values from the winning combintations
         this.setState({
-          winner: 'The winner is: X'
+          winner: square[index1]
         })
+      }
     }
     console.log(this.state.squares);
   }
 
+  // reload the page when restart button is clicked
   playAgain = () => {
     window.location.reload(false)
   }
 
+  // set each div to a onClick set the userMove with an index number from 0-8
+  //set the text for each div to the corresponding index number of the squares array starting at 0 - this will show either 'X' or 'O'
   render = () => {
   return (
     <div className="App">
-    <div><h1>{this.state.winner}</h1></div>
+    <div><h1>The Winner is: {this.state.winner}</h1></div>
     <div className="container">
       <div onClick={() => this.userMove(0)} className="square" id="0">{this.state.squares[0]}</div>
       <div onClick={() => this.userMove(1)} className="square" id="1">{this.state.squares[1]}</div>
@@ -56,10 +88,10 @@ class App extends React.Component {
       <div onClick={() => this.userMove(7)} className="square" id="7">{this.state.squares[7]}</div>
       <div onClick={() => this.userMove(8)} className="square" id="8">{this.state.squares[8]}</div>
     </div>
-    <button className="playAgain-btn" onClick={this.playAgain}>Play Again</button>
+      <button className="playAgain-btn" onClick={this.playAgain}>Restart Game</button>
     </div>
-  );
-}
+    );
+  }
 }
 
 export default App;
