@@ -4,7 +4,7 @@
 
 ![tic-tac-toe img](https://i.imgur.com/27CAyhS.png)
 
-Technologies:
+### Technologies:
 - React
 - Create-react-app
 - HTML

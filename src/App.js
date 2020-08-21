@@ -1,3 +1,5 @@
+// referenced how to declare winner on React's tutorial -> (https://reactjs.org/tutorial/tutorial.html)
+
 import React from 'react';
 // import OffClick from 'react-offclick';
 import './App.css';

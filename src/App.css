@@ -90,3 +90,9 @@ h1 {
   font-family: arial;
   font-weight: 600;
 }
+
+@media screen and (min-device-width: 300px) and (max-device-width: 700px) {
+  body{
+    margin-top: 100px;
+  }
+}
