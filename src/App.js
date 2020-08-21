@@ -4,28 +4,47 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    // nextUser (next player) is set to true to toggle
-    nextUser: true,
     // set an array squares of 9 indexes set to null
-    squares: Array(9).fill(null)
+    squares: Array(9).fill(""),
+    // set first player move to 'X'
+    nextPlayer: 'X',
+    winner: ''
   }
 
   userMove = (index) => {
-      //store indexes of square array in squares variable
-      let squares = this.state.squares.slice();
-      // set the indexes of the array to 'X' if nextUser is true or 'O' if false
-      squares[index] = this.state.nextUser ? 'X' : 'O'
-      // set state so sqaures is set the the variable squares and nextUser !nextUser
-      this.setState({
-        squares: squares,
-        nextUser: !this.state.nextUser
-      })
+    // set variables to state of nextPlayer and the array of squares
+    let nextPlayer = this.state.nextPlayer
+    let square = this.state.squares
+
+    //set the index of a square to 'X'
+    square[index] = nextPlayer;
+    //set nextPlayer to 'O' if nextPlayer is 'X' otherwise set it to 'X'
+    nextPlayer = nextPlayer === 'X' ? 'O' : 'X';
+    console.log(`nextPlayer ${nextPlayer}`);
+    // set nextPlayer and square to state
+    this.setState({
+      nextPlayer: nextPlayer,
+      squares: square
+    })
+    // find winner
+    //
+      if (this.state.squares[0] === 'X' && this.state.squares[1] === 'X' && this.state.squares[2] === 'X') {
+        console.log('X wins');
+        this.setState({
+          winner: 'The winner is: X'
+        })
+    }
+    console.log(this.state.squares);
   }
 
+  playAgain = () => {
+    window.location.reload(false)
+  }
 
   render = () => {
   return (
     <div className="App">
+    <div><h1>{this.state.winner}</h1></div>
     <div className="container">
       <div onClick={() => this.userMove(0)} className="square" id="0">{this.state.squares[0]}</div>
       <div onClick={() => this.userMove(1)} className="square" id="1">{this.state.squares[1]}</div>
@@ -37,6 +56,7 @@ class App extends React.Component {
       <div onClick={() => this.userMove(7)} className="square" id="7">{this.state.squares[7]}</div>
       <div onClick={() => this.userMove(8)} className="square" id="8">{this.state.squares[8]}</div>
     </div>
+    <button className="playAgain-btn" onClick={this.playAgain}>Play Again</button>
     </div>
   );
 }
