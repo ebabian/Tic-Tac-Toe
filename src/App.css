@@ -39,7 +39,7 @@
 }
 body {
   margin-top: 250px;
-  background-color: rgb(1,58,62);
+  background-color: rgb(255, 196, 67);
 }
 
 .container {
@@ -59,7 +59,7 @@ body {
   height: 105px;
   width: 100px;
   margin: 3px 3px;
-  background-color: rgb(1,58,62);
+  background-color: rgb(255, 196, 67);
   /* color:  #ccffcc; */
   overflow: hidden;
   /* border: 2px solid rgb(1,58,62); */
@@ -72,12 +72,14 @@ body {
 }
 
 .square:hover {
-  background-color: rgb(1,58,62, 0.7);
+  background-color: rgba(255, 196, 67, .7);
 }
 
 h1 {
   margin-right: 20px;
   margin-bottom: 20px;
+  color: white;
+  text-shadow: 2px 2px rgb(250, 185, 44);
 }
 
 .playAgain-btn {
@@ -89,6 +91,12 @@ h1 {
   text-transform: uppercase;
   font-family: arial;
   font-weight: 600;
+  border: 1px solid white;
+  background-color: rgba(255, 196, 67, .7);
+}
+
+.playAgain-btn:hover {
+  background-color: rgba(255, 255, 255, 0.317);
 }
 
 @media screen and (min-device-width: 300px) and (max-device-width: 700px) {
